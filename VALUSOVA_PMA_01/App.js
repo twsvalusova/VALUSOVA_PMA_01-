@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
 export default function App() {
   const[text, setText] = useState('');
@@ -18,12 +18,16 @@ export default function App() {
     <View style={styles.container}>
 
       <View style={styles.inputContainer}>
-        <TextInput 
-        onChangeText={inputHandler} 
-        style={styles.input} 
-        placeholder='ahoj' />
+        
+      <TextInput
+      onChangeText={inputHandler}
+      style={styles.input}
+      placeholder="Zadaj text"
+      value={text}
+      />
 
-        <button onPress={addHandler} title='Zadaj' />
+
+        <Button onPress={addHandler} title='Zadaj' color="magenta" />
       </View>
 
       <View style={styles.taskContainer}>
@@ -41,42 +45,47 @@ export default function App() {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
+
   input: {
-    borderWidth: 5,
-    borderRadius: 10,
-    borderColor: '#B4DD1E',
-    width: '80% '
+    borderWidth: 3,
+    borderRadius: 2,
+    borderColor: 'hotpink',
+    width: '80%',
+    height: 35,
+    padding: 5,
+    backgroundColor: 'lightpink',
   },
 
   inputContainer: {
-    flex: 1, 
-    borderColor: 'hotpink', 
-    allignItems: 'center', 
-    justifyContent: 'space-between', 
+    height: 120,
+    paddingHorizontal: 15,
+    paddingTop: 40,
     flexDirection: 'row',
-    paddingHorizontal: 20
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    backgroundColor: '#B4DD1E',
   },
 
   taskContainer: {
-    flex: 1, 
-    backgroundColor: 'lightpink', 
-    borderColor: 'hotpink' ,
-    borderTopWidth: 3
+    flex: 1,
+    backgroundColor: 'hotpink',
+    borderColor: 'lightyellow',
+    borderTopWidth: 3,
+    paddingTop: 10,
   },
+
   taskText: {
-    backgroundColor: 'lightblue',
-    margin: 20,
-    padding: 20,
-    borderRadius: 10,
-    fontSize: 20
-  }
-
-
+    backgroundColor: 'lightpink',
+    marginHorizontal: 15,
+    marginVertical: 5,
+    padding: 8,
+    borderRadius: 4,
+    fontSize: 14,
+  },
 });
