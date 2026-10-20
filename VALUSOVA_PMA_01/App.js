@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, ScrollView, FlatList } from 'react-native';
+import TaskItem from './src/components/TaskItem';
 
 export default function App() {
   const[text, setText] = useState('');
@@ -30,14 +31,12 @@ export default function App() {
         <Button onPress={addHandler} title='Zadaj' color="magenta" />
       </View>
 
-      <View style={styles.taskContainer}>
-        <Text>Udalosti: </Text>
-          {taskList.map((i) => (
-            <Text style={styles.taskText} key={i}>
-            {i}
-            </Text>
-          ))}
-      </View>
+      <FlatList
+        style={styles.taskContainer}
+        data={taskList}
+        renderItem={({item}) => <TaskItem itemTask={item} />}
+        keyExtractor={item => item.id}
+      />
 
       <StatusBar style="auto" />
     </View>
